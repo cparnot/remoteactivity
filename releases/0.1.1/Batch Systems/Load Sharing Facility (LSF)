@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+import os, string, sys
+
+# -------------------------------
+# Job status defines
+# -------------------------------
+QueuedJobStatus = 100
+RunningJobStatus = 200
+
+# -------------------------------
+# Job class
+# -------------------------------
+class Job:
+    def __init__(self, id=None, name=None, status=None):
+        self.id = id
+        self.name = name
+        self.status = status
+        
+# -------------------------------
+# LSF querying function
+# -------------------------------
+def LSFJobsFactory(user):        
+    # Use bjobs command, which returns jobs for user
+    outPipe = os.popen('bjobs')
+    outLines = outPipe.readlines()
+    if outPipe.close(): sys.exit(1)  # Command failed
+    if len(outLines) == 0: return []  # No jobs
+    outLines.pop(0) # Trim off the header
+
+    jobs = {}
+    for l in outLines:
+        jobid = string.strip(l[0:6])
+        name = string.strip(l[57:68])
+        outStatus = string.strip(l[16:22])
+            
+        job = jobs.setdefault( jobid, Job(id=jobid, name=name) )
+
+        if outStatus == 'PEND':
+            job.status = QueuedJobStatus
+        else:
+            job.status = RunningJobStatus
+            
+    return jobs.values()
+    
+# -------------------------------
+# Create jobs 
+# -------------------------------
+jobs = LSFJobsFactory(os.environ["USER"])
+
+# -------------------------------
+# Print plist
+# -------------------------------
+print \
+"""
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>JobDescriptionsKey</key>
+    <array>
+"""
+
+for job in jobs:
+    print \
+    """
+        <dict>
+            <key>JobIdentifierKey</key> <integer>%s</integer>
+            <key>JobNameKey</key>       <string>%s</string>
+            <key>JobStatusKey</key>     <integer>%s</integer>
+        </dict>
+    """ % ( str(job.id), job.name, str(job.status) )
+    
+print \
+"""
+    </array>
+</dict>
+</plist>
+"""
