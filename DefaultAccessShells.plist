@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>name</key>
+        <string>Bourne-Again Shell (Bash)</string>
+        <key>path</key>
+        <string>/bin/bash</string>
+        <key>arguments</key>
+        <array>
+        </array>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Secure Shell (SSH)</string>
+        <key>path</key>
+        <string>/usr/bin/ssh</string>
+        <key>arguments</key>
+        <array>
+            <string>[[USERNAME]]@[[HOSTNAME]]</string>
+            <string>/usr/bin/env</string>
+            <string>bash</string>
+            <string>-l</string>
+        </array>
+    </dict>
+    <dict>
+        <key>name</key>
+        <string>Remote Shell (RSH)</string>
+        <key>path</key>
+        <string>/usr/bin/rsh</string>
+        <key>arguments</key>
+        <array>
+            <string>-l</string>
+            <string>[[USERNAME]]</string>
+            <string>[[HOSTNAME]]</string>
+            <string>/usr/bin/env</string>
+            <string>bash</string>
+            <string>-l</string>
+        </array>
+    </dict>
+</array>
+</plist>

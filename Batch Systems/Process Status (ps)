@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+import os, os.path, string, sys
+
+# -------------------------------
+# Job status defines
+# -------------------------------
+QueuedJobStatus = 100
+RunningJobStatus = 200
+
+# -------------------------------
+# Job class
+# -------------------------------
+class Job:
+		def __init__(self, id=None, ppid=None, name=None, status=None):
+				self.id = int(id)
+				self.name = name
+				self.status = status
+				self.ppid = int(ppid)
+
+# -------------------------------
+# PS querying function
+# -------------------------------
+def PSJobsFactory(user):
+		SensorPIDs = dict.fromkeys([os.getpid(), os.getppid()])
+	
+		if 'SSH_CONNECTION' in os.environ:
+			SensorPIDs.setdefault(int(os.environ['SSH_CONNECTION'].split()[1]))
+			
+		outPipe = os.popen('/bin/ps cx -o pid,ppid,command -U ' + user)
+		outLines = outPipe.readlines()
+		if outPipe.close(): sys.exit(1)	 # Command failed
+		
+		if len(outLines) == 0: return []	# No jobs
+		outLines.pop(0) # Trim off the header
+		
+		jobs = {}
+		FilterJobs = [ 'bash', 'tcsh', 'csh', 'sh', 'ssh', 'sshd', 'top' ]
+
+		for l in outLines:
+				tokens = string.split(l)
+				jobid = int(tokens[0])
+				ppid = int(tokens[1])
+				name = tokens[2]
+				if name not in FilterJobs:
+					jobs[jobid] = Job(id=jobid, name=name, status=RunningJobStatus, ppid=ppid)
+
+		# This is lazier than building a proper tree - we simply iterate 
+		# over the list until we have found all new parent processes:
+		spl = 0
+		while spl < len(SensorPIDs):
+			[SensorPIDs.setdefault(job.ppid) for job in jobs.values() if job.id in SensorPIDs]
+			[SensorPIDs.setdefault(job.id) for job in jobs.values() if job.ppid in SensorPIDs]
+			spl = len(SensorPIDs)
+		
+		# Return only the jobs whose IDs aren't in our sensor PID list:
+		return [job for job in jobs.values() if job.id not in SensorPIDs]
+
+# -------------------------------
+# Create jobs
+# -------------------------------
+jobs = PSJobsFactory(os.environ["USER"])
+
+# -------------------------------
+# Print plist
+# -------------------------------
+print \
+"""
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+		<key>JobDescriptionsKey</key>
+		<array>
+"""
+
+for job in jobs:
+		print \
+		"""
+				<dict>
+						<key>JobIdentifierKey</key> <integer>%s</integer>
+						<key>JobNameKey</key>				<string>%s</string>
+						<key>JobStatusKey</key>			<integer>%s</integer>
+				</dict>
+		""" % ( str(job.id), job.name, str(job.status) )
+
+print \
+"""
+		</array>
+</dict>
+</plist>
+"""
+		 
