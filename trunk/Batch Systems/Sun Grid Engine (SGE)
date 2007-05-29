@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+import os, string
+
+# -------------------------------
+# Job status defines
+# -------------------------------
+QueuedJobStatus = 100
+RunningJobStatus = 200
+
+# -------------------------------
+# Job class
+# -------------------------------
+class Job:
+    def __init__(self, id=None, name=None, status=None):
+        self.id = id
+        self.name = name
+        self.status = status
+        
+# -------------------------------
+# SGE querying function
+# -------------------------------
+def SGEJobsFactory(user):        
+    outPipe = os.popen('qstat -u ' + user)
+    outLines = outPipe.readlines()
+    if outPipe.close(): sys.exit(1)  # Command failed
+    if len(outLines) == 0: return []  # No jobs
+    outLines.pop(0) # Trim off the header
+    outLines.pop(0)
+
+    jobs = {}
+    for l in outLines:
+        tokens = string.split(l)
+            
+        jobid = tokens[0]
+        name = tokens[2]
+        job = jobs.setdefault( jobid, Job(id=jobid, name=name) )
+
+        if tokens[4] == 'r':  # Running job
+            job.status = RunningJobStatus
+        else: # Queued job
+            job.status = QueuedJobStatus
+        
+    return jobs.values()
+
+# -------------------------------
+# Create jobs 
+# -------------------------------
+jobs = SGEJobsFactory(os.environ["USER"])
+
+# -------------------------------
+# Print plist
+# -------------------------------
+print \
+"""
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>JobDescriptionsKey</key>
+    <array>
+"""
+
+for job in jobs:
+    print \
+    """
+        <dict>
+            <key>JobIdentifierKey</key> <integer>%s</integer>
+            <key>JobNameKey</key>       <string>%s</string>
+            <key>JobStatusKey</key>     <integer>%s</integer>
+        </dict>
+    """ % ( str(job.id), job.name, str(job.status) )
+    
+print \
+"""
+    </array>
+</dict>
+</plist>
+"""
+
+
+     
