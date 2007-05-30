@@ -15,3 +15,5 @@ Remote Activity has a summary feature that can be very useful. Click the summary
 
 To get started using Remote Activity, just download it, and add some remote hosts. You need to have access to your remote hosts without typing a password at this point, which means you need to have SSH or RSH configured properly.
 
+Drew McCormack
+(on MacResearch.org)
