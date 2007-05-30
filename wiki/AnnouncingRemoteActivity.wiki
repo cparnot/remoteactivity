@@ -1,0 +1,17 @@
+#The original announcement of Remote Activity on macresearch.org
+
+= Announcement from 25th May, 2007 =
+
+Around a year ago I decided I would finally bite the bullet and learn Core Data, a relatively new framework for storing data in Cocoa. I find the best way to learn something is to jump in the deep end with a new project, so I thought one up. I contacted a couple of guys that knew more about Core Data than I did — Alexander Griekspoor and Charles Parnot — and gave them no choice but to help me in my quest. They graciously obliged, and after much stopping and starting throughout the year, the application in question is now ready for a public alpha release.
+
+Remote Activity is that application. It is like a distributed version of Activity Monitor: you add your remote hosts (eg clusters, supercomputers, workstations, grids) to it, and it queries them regularly for running jobs, and summarizes the status of all of your calculations in one window. Out of the box it supports a number of batch systems — SGE, LSF, PBS, and Xgrid — and can also be used with the ps to monitor interactive runs.
+
+Batch system specifications are loaded via a plugin architecture, so you can even write your own if it is not included by default. Any scripting language or executable will work, as long as it runs on the remote machine — you do not need to program plugins in Cocoa.
+
+In addition to basic monitoring, Remote Activity can also generate notifications when a job changes status. For example, if you have a long running job, you can ask to receive an email or have Remote Activity popup a dialog box when it finishes.
+
+Remote Activity has a summary feature that can be very useful. Click the summary button, and the window shinks down, only showing job totals for each remote machine. Click the button again, and the window expands to reveal full details of running jobs. This makes it very easy to keep an eye on changes without having to leave the Remote Activity window taking up valuable screen real estate.
+
+To get started using Remote Activity, just download it, and add some remote hosts. You need to have access to your remote hosts without typing a password at this point, which means you need to have SSH or RSH configured properly.
+
+
