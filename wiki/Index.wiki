@@ -1,7 +1,0 @@
-#summary Index of Remote Activity Wiki
-= Introduction =
-
-  * [AnnouncingRemoteActivity The original announcement of Remote Activity]
-  * [UsingForXgrid Using Remote Activity for Xgrid]
-
-
