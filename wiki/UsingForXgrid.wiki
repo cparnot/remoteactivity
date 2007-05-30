@@ -1,0 +1,32 @@
+#summary Explains how you use Remote Activity to monitor Xgrid jobs.
+
+= Using Remote Activity with Xgrid =
+
+==Username==
+
+Even though username is not needed by Xgrid, enter a bogus username in the field. Otherwise, remote activity does not work.
+
+==Password==
+
+There is one feature not documented that allows to use Xgrid controller passwords, and also to use the the Keychain to store the password:
+
+CASE 1 : VERY EASY
+If you have used GridStuffer, Xgrid FUSE or xgridstatus to set a Keychain password, it will be available automagically!! You will first get a message to allow Remote Activity to use the Keychain item. And you don't need to do anything else.
+
+CASE 2 : EASY
+
+In the environment variables for a host, you can set the password with:
+XGRID_CONTROLLER_PASSWORD
+
+The problem with the above is that the password is then "in the clear".
+
+CASE 3 : SECURE
+
+Another option is to set the password with:
+XGRID_CONTROLLER_KEYCHAIN
+Then, on the first connection by Remote Activity, the password will be stored in the keychain. You can then remove the variable from the Host settings in Remote Activity. The password in the keychain will be used automatically if present.
+
+==Shell: local or remote?==
+For Xgrid, you would usually use 'bash' as the Shell, so the local user Keychain will be used. I am not sure what will happen when using ssh to connect to an Xgrid from a remote host (e.g. to get past a firewall thru port 22 and then access the Xgrid controller).
+
+
