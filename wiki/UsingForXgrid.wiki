@@ -1,4 +1,5 @@
 #summary Explains how you use Remote Activity to monitor Xgrid jobs.
+#labels Featured,Phase-Deploy
 
 = Using Remote Activity with Xgrid =
 
@@ -28,5 +29,4 @@ Then, on the first connection by Remote Activity, the password will be stored in
 
 ==Shell: local or remote?==
 For Xgrid, you would usually use 'bash' as the Shell, so the local user Keychain will be used. I am not sure what will happen when using ssh to connect to an Xgrid from a remote host (e.g. to get past a firewall thru port 22 and then access the Xgrid controller).
-
 
