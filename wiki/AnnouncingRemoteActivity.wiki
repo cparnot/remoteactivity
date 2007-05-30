@@ -1,3 +1,4 @@
+#labels Featured
 #The original announcement of Remote Activity on macresearch.org
 
 = Announcement from 25th May, 2007 =
@@ -13,5 +14,4 @@ In addition to basic monitoring, Remote Activity can also generate notifications
 Remote Activity has a summary feature that can be very useful. Click the summary button, and the window shinks down, only showing job totals for each remote machine. Click the button again, and the window expands to reveal full details of running jobs. This makes it very easy to keep an eye on changes without having to leave the Remote Activity window taking up valuable screen real estate.
 
 To get started using Remote Activity, just download it, and add some remote hosts. You need to have access to your remote hosts without typing a password at this point, which means you need to have SSH or RSH configured properly.
-
 
