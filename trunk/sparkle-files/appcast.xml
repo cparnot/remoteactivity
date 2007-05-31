@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http:// 
+www.andymatuschak.org/xml-namespaces/sparkle">
+<!-- Do not commit this file unless the new version is really available for download-->
+	<channel> 
+		<title>Remote Activity Changelog</title> 
+		<link>http://remoteactivity.googlecode.com/svn/trunk/sparkle-files/changelog.txt</link> 
+		<description>Description of the latest version of Remote Activity</description>
+		<language>en</language> 
+		<item>
+			<title>Version 0.1.1</title> 
+			<description>http://remoteactivity.googlecode.com/svn/trunk/sparkle-files/changelog.txt</description> 
+			<pubDate>Wed, 30 May 2007 9:00:00 +0000</pubDate>
+			<!-- This enclosure allows to use a custom name for the download -->
+			<enclosure
+				sparkle:version="0.1.1"
+				url="http://remoteactivity.googlecode.com/files/RemoteActivity_0.1.1.zip"
+				length="1700000"
+				type="application/octet-stream"/>
+		</item> 
+	</channel> 
+</rss>
