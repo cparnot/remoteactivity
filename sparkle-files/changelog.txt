@@ -1,0 +1,14 @@
+Remote Activity
+---------------
+
+
+Changelog
+---------
+
+
+Version 0.1.2
+* Added Sparkle support
+
+
+Version 0.1.1
+May 29, 2007

@@ -263,6 +263,8 @@
 		3A5238810979824900D6A469 /* ToggleDrawer.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ToggleDrawer.tiff; sourceTree = "<group>"; };
 		3A5238BB097984FB00D6A469 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		3A5238BC097984FB00D6A469 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = appcast.xml; path = "sparkle-files/appcast.xml"; sourceTree = "<group>"; };
+		56F2F3DD0C0E4BF400E1EB79 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = changelog.txt; path = "sparkle-files/changelog.txt"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* RemoteActivity_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = RemoteActivity_DataModel.xcdatamodel; sourceTree = "<group>"; };
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		77C8280B06725ACE000B614F /* RemoteActivityAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteActivityAppDelegate.h; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 		29B97314FDCFA39411CA2CEA /* RemoteActivity */ = {
 			isa = PBXGroup;
 			children = (
+				56F2F3D60C0E4BD200E1EB79 /* Sparkle files */,
 				072D05ED0AAED63B00E1B836 /* Unused Images */,
 				072D05DE0AAED60200E1B836 /* ArtWork */,
 				7756732906782D8800D1FEB8 /* Models */,
@@ -529,6 +532,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56F2F3D60C0E4BD200E1EB79 /* Sparkle files */ = {
+			isa = PBXGroup;
+			children = (
+				56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */,
+				56F2F3DD0C0E4BF400E1EB79 /* changelog.txt */,
+			);
+			name = "Sparkle files";
 			sourceTree = "<group>";
 		};
 		7756732906782D8800D1FEB8 /* Models */ = {
