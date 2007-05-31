@@ -94,6 +94,8 @@
 		3A52383C09797EB700D6A469 /* Remove.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3A52383809797EB700D6A469 /* Remove.tiff */; };
 		3A5238820979824900D6A469 /* ToggleDrawer.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3A5238810979824900D6A469 /* ToggleDrawer.tiff */; };
 		3A5238BD097984FB00D6A469 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5238BC097984FB00D6A469 /* MainController.m */; };
+		56721E9A0C0E4FF1003F5BEE /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56721E990C0E4FF1003F5BEE /* Sparkle.framework */; };
+		56721EEF0C0E53E7003F5BEE /* Sparkle.framework in Copy Sparkle */ = {isa = PBXBuildFile; fileRef = 56721E990C0E4FF1003F5BEE /* Sparkle.framework */; };
 		770B37ED0679A11B001EADE2 /* RemoteActivity_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* RemoteActivity_DataModel.xcdatamodel */; };
 		77C8280D06725ACE000B614F /* RemoteActivityAppDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = 77C8280B06725ACE000B614F /* RemoteActivityAppDelegate.h */; };
 		77C8280E06725ACE000B614F /* RemoteActivityAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* RemoteActivityAppDelegate.m */; };
@@ -138,6 +140,17 @@
 				07B7C4580BFA0069000220CF /* NSBezierPathAdditions.h in CopyFiles */,
 				07A976490C06D1DB004AC51B /* RATableView.h in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56721EED0C0E53CE003F5BEE /* Copy Sparkle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				56721EEF0C0E53E7003F5BEE /* Sparkle.framework in Copy Sparkle */,
+			);
+			name = "Copy Sparkle";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -263,6 +276,8 @@
 		3A5238810979824900D6A469 /* ToggleDrawer.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ToggleDrawer.tiff; sourceTree = "<group>"; };
 		3A5238BB097984FB00D6A469 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		3A5238BC097984FB00D6A469 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		56721E990C0E4FF1003F5BEE /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
+		56721EB70C0E50FB003F5BEE /* Sparkle-HOWTO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Sparkle-HOWTO.txt"; path = "sparkle-files/Sparkle-HOWTO.txt"; sourceTree = "<group>"; };
 		56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = appcast.xml; path = "sparkle-files/appcast.xml"; sourceTree = "<group>"; };
 		56F2F3DD0C0E4BF400E1EB79 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = changelog.txt; path = "sparkle-files/changelog.txt"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* RemoteActivity_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = RemoteActivity_DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -282,6 +297,7 @@
 				071A0F4D0AA48CE20091A461 /* RBSplitView.framework in Frameworks */,
 				07018CD30AA6EA930077FBD0 /* Message.framework in Frameworks */,
 				079244AF0AAEB31A008BC165 /* libcrypto.dylib in Frameworks */,
+				56721E9A0C0E4FF1003F5BEE /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +473,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56721E990C0E4FF1003F5BEE /* Sparkle.framework */,
 				07018CD20AA6EA930077FBD0 /* Message.framework */,
 				071A0F4C0AA48CE20091A461 /* RBSplitView.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -539,6 +556,7 @@
 			children = (
 				56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */,
 				56F2F3DD0C0E4BF400E1EB79 /* changelog.txt */,
+				56721EB70C0E50FB003F5BEE /* Sparkle-HOWTO.txt */,
 			);
 			name = "Sparkle files";
 			sourceTree = "<group>";
@@ -562,6 +580,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				07EC8DE80AA46C9D0006BEF1 /* CopyFiles */,
+				56721EED0C0E53CE003F5BEE /* Copy Sparkle */,
 			);
 			buildRules = (
 				0716731F0A6CD0A400DCC2FC /* PBXBuildRule */,
