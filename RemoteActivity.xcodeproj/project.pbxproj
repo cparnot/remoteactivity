@@ -279,7 +279,7 @@
 		56721E990C0E4FF1003F5BEE /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = /Library/Frameworks/Sparkle.framework; sourceTree = "<absolute>"; };
 		56721EB70C0E50FB003F5BEE /* Sparkle-HOWTO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Sparkle-HOWTO.txt"; path = "sparkle-files/Sparkle-HOWTO.txt"; sourceTree = "<group>"; };
 		56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = appcast.xml; path = "sparkle-files/appcast.xml"; sourceTree = "<group>"; };
-		56F2F3DD0C0E4BF400E1EB79 /* changelog.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = changelog.html; path = "sparkle-files/changelog.html"; sourceTree = "<group>"; };
+		56F2F3DD0C0E4BF400E1EB79 /* changelog.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = changelog.html; path = "sparkle-files/changelog.html"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* RemoteActivity_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = RemoteActivity_DataModel.xcdatamodel; sourceTree = "<group>"; };
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		77C8280B06725ACE000B614F /* RemoteActivityAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteActivityAppDelegate.h; sourceTree = "<group>"; };
