@@ -112,7 +112,19 @@ static NSString *REMOTE_ACTIVITY_HOSTNAME   = @"REMOTE_ACTIVITY_HOSTNAME";
     NSPipe *standardOutput = [NSPipe pipe];
     NSPipe *standardError = [NSPipe pipe];
     NSTask *task = [[NSTask alloc] init];
-    [task setArguments:[self valueForKey:@"shellArguments"]];
+    
+    // Set shell arguments
+    NSMutableArray *args = [NSMutableArray array];
+    NSString *hostShellArgs = [host valueForKey:@"executionShellOptions"];
+    if ( nil != hostShellArgs ) {
+        NSMutableArray *components = [NSMutableArray arrayWithArray:[hostShellArgs componentsSeparatedByString:@" "]];
+        [components removeObject:@""]; // Remove empty strings
+        [args addObjectsFromArray:components];
+    }
+    [args addObjectsFromArray:shellArguments];
+    [task setArguments:args];
+    
+    // Finish task setup
     [task setLaunchPath:[self valueForKey:@"shellPath"]];
     [task setStandardInput:standardInput];
     [task setStandardOutput:standardOutput];
@@ -152,21 +164,35 @@ static NSString *REMOTE_ACTIVITY_HOSTNAME   = @"REMOTE_ACTIVITY_HOSTNAME";
 -(void)queryDidFinish:(NSNotification *)notif {
     NSTask *task = [notif object];
     int status = [task terminationStatus];
+    BOOL failed = (status != 0);
     
     // If output has not been read, come back later
-    if ( outputData == nil && status == 0 ) {
+    if ( outputData == nil && !failed ) {
         [self performSelector:@selector(queryDidFinish:) withObject:notif afterDelay:0.0];
         return;
     }
     
-    if ( status == 0 ) {
-        NSString *errorString;
-        NSDictionary *responseDict = [NSPropertyListSerialization propertyListFromData:outputData
-            mutabilityOption:NSPropertyListImmutable 
-            format:NULL 
-            errorDescription:&errorString];
-        [self setValue:responseDict forKey:@"responsePropertyList"];
+    if ( !failed ) {
+        // Strip off any extraneous output that might originate from the access shell
+        NSString *outputString = [[[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding] autorelease];
+        NSRange range = [outputString rangeOfString:@"<?xml"];
+        if ( range.location == NSNotFound ) {
+            failed = YES;
+        }
+        else {
+            // Trim output and parse plist
+            outputString = [outputString substringFromIndex:range.location];
+            NSData *trimmedData = [outputString dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *errorString;
+            NSDictionary *responseDict = [NSPropertyListSerialization propertyListFromData:trimmedData
+                                                                          mutabilityOption:NSPropertyListImmutable 
+                                                                                    format:NULL 
+                                                                          errorDescription:&errorString];
+            [self setResponsePropertyList:responseDict];
+        }
     }
+    
+    // Clean up
     [[NSNotificationCenter defaultCenter] removeObserver:self 
         name:NSTaskDidTerminateNotification object:task];
     [outputData release]; outputData = nil;
@@ -174,7 +200,7 @@ static NSString *REMOTE_ACTIVITY_HOSTNAME   = @"REMOTE_ACTIVITY_HOSTNAME";
     [task release]; task = nil;
     
     // Inform delegate
-    if ( status == 0 ) {
+    if ( !failed ) {
         if ( nil != delegate &&
              [delegate respondsToSelector:@selector(hostQueryDidFinish:)] ) {
             [delegate hostQueryDidFinish:self];

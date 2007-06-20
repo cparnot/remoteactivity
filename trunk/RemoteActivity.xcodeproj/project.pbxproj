@@ -502,7 +502,7 @@
 		29B97314FDCFA39411CA2CEA /* RemoteActivity */ = {
 			isa = PBXGroup;
 			children = (
-				56F2F3D60C0E4BD200E1EB79 /* Sparkle files */,
+				56F2F3D60C0E4BD200E1EB79 /* Sparkle Files */,
 				072D05ED0AAED63B00E1B836 /* Unused Images */,
 				072D05DE0AAED60200E1B836 /* ArtWork */,
 				7756732906782D8800D1FEB8 /* Models */,
@@ -551,14 +551,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		56F2F3D60C0E4BD200E1EB79 /* Sparkle files */ = {
+		56F2F3D60C0E4BD200E1EB79 /* Sparkle Files */ = {
 			isa = PBXGroup;
 			children = (
 				56F2F3DC0C0E4BF400E1EB79 /* appcast.xml */,
 				56F2F3DD0C0E4BF400E1EB79 /* changelog.html */,
 				56721EB70C0E50FB003F5BEE /* Sparkle-HOWTO.txt */,
 			);
-			name = "Sparkle files";
+			name = "Sparkle Files";
 			sourceTree = "<group>";
 		};
 		7756732906782D8800D1FEB8 /* Models */ = {
