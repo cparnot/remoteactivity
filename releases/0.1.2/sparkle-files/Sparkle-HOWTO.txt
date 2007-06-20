@@ -1,0 +1,7 @@
+Sparkle and Remote Activity building
+
+
+The Sparkle framework is only added as a "reference" in the project. The framework was **NOT** included in the project folder, so as not to "pollute" the source directory (also, the framework is quite big, adding a significant amount to the repository size, which seems to be limited by Google??). Right now, it is referenced as an absolute path to '/Library/Frameworks/Sparkle.framework', which means developers will have to upload it separately and put it there for the build to work.
+
+Maybe we should change that? Include it in the source files? Change the reference path?
+

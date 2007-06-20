@@ -1,0 +1,114 @@
+{
+    IBClasses = (
+        {CLASS = ColorBackgroundView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            CLASS = FilterSegmentedControl; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {predicateTarget = id; }; 
+            SUPERCLASS = NSSegmentedControl; 
+        }, 
+        {
+            ACTIONS = {
+                "" = id; 
+                editHost = id; 
+                queryAllHosts = id; 
+                querySelectedHosts = id; 
+                showInfo = id; 
+                takeHostsOffline = id; 
+                takeHostsOnline = id; 
+            }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = GradientView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = HostCell; LANGUAGE = ObjC; SUPERCLASS = NSTextFieldCell; }, 
+        {
+            ACTIONS = {closeHostSheet = id; editHost = id; }; 
+            CLASS = HostController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                hostNameTextField = NSTextField; 
+                hostSheetWindow = NSWindow; 
+                hostsTableView = NSTableView; 
+                mainWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSArrayController; 
+        }, 
+        {CLASS = HostFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
+        {
+            CLASS = HostImageAndTextCell; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = ImageAndTextCell; 
+        }, 
+        {CLASS = HostsTableView; LANGUAGE = ObjC; SUPERCLASS = RATableView; }, 
+        {CLASS = ImageAndTextCell; LANGUAGE = ObjC; SUPERCLASS = NSTextFieldCell; }, 
+        {CLASS = JobCountFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
+        {CLASS = JobsTableView; LANGUAGE = ObjC; SUPERCLASS = RATableView; }, 
+        {
+            ACTIONS = {
+                editHost = id; 
+                expandJobInfo = id; 
+                queryAllHosts = id; 
+                querySelectedHosts = id; 
+                redo = id; 
+                takeHostsOffline = id; 
+                takeHostsOnline = id; 
+                toggleCollapsedStateOfJobInfo = id; 
+                toggleCollapsedStateOfWindow = id; 
+                undo = id; 
+            }; 
+            CLASS = MainController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                filterBarGradientView = GradientView; 
+                filterSegmentedControl = FilterSegmentedControl; 
+                hostsController = HostController; 
+                jobCountTextField = NSTextField; 
+                jobInfoSplitSubview = RBSplitSubview; 
+                jobSplitSubview = RBSplitSubview; 
+                searchField = NSSearchField; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {didAdjustSubviews = id; willAdjustSubviews = id; }; 
+            CLASS = NSObject; 
+            LANGUAGE = ObjC; 
+        }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
+        {CLASS = ProgressIndicatorCell; LANGUAGE = ObjC; SUPERCLASS = NSCell; }, 
+        {
+            ACTIONS = {delete = id; }; 
+            CLASS = RATableView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableView; 
+        }, 
+        {CLASS = RBSplitSubview; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {
+            CLASS = RBSplitView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = RBSplitSubview; 
+        }, 
+        {
+            CLASS = RSVerticallyCenteredTextFieldCell; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTextFieldCell; 
+        }, 
+        {
+            ACTIONS = {saveAction = id; }; 
+            CLASS = RemoteActivityAppDelegate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {window = NSWindow; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {checkForUpdates = id; }; 
+            CLASS = SUUpdater; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}
